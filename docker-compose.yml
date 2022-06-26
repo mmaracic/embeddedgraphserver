@@ -10,11 +10,11 @@ services:
       - 7474:7474
       - 7687:7687
     volumes:
-      - ./conf:/conf
-      - ./data:/data
-      - ./import:/import
-      - ./logs:/logs
-      - ./plugins:/plugins
+      - ./graphdb/conf:/conf
+      - ./graphdb/data:/data
+      - ./graphdb/import:/import
+      - ./graphdb/logs:/logs
+      - ./graphdb/plugins:/plugins
     environment:
       # Raise memory limits
       - NEO4J_AUTH=none
