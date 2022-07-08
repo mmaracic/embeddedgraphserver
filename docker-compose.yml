@@ -24,3 +24,7 @@ services:
       - NEO4J_dbms_memory_heap_initial_size=1G
       - NEO4J_dbms_memory_heap_max__size=1G
   #    - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes #needed only for enterprise version
+      - NEO4J_apoc_export_file_enabled=true
+      - NEO4J_apoc_import_file_enabled=true
+      - NEO4J_apoc_import_file_use__neo4j__config=true
+      - NEO4JLABS_PLUGINS=["apoc"]

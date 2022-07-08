@@ -1,6 +1,9 @@
 package hr.mmaracic.graphpr;
 
 import org.neo4j.configuration.GraphDatabaseSettings;
+import org.neo4j.configuration.connectors.BoltConnector;
+import org.neo4j.configuration.connectors.HttpConnector;
+import org.neo4j.configuration.helpers.SocketAddress;
 import org.neo4j.dbms.api.DatabaseManagementService;
 import org.neo4j.dbms.api.DatabaseManagementServiceBuilder;
 import org.neo4j.graphdb.GraphDatabaseService;
@@ -35,7 +38,12 @@ public class Application {
 
     @Bean
     public DatabaseManagementService getDatabaseManagementService() {
-        DatabaseManagementService managementService = new DatabaseManagementServiceBuilder(Path.of("graphdb"))
+        DatabaseManagementService managementService = new DatabaseManagementServiceBuilder(Path.of("graphdb2"))
+                .setConfig( GraphDatabaseSettings.mode, GraphDatabaseSettings.Mode.SINGLE )
+                .setConfig( GraphDatabaseSettings.default_advertised_address, new SocketAddress( "localhost" ) )
+                .setConfig( GraphDatabaseSettings.default_listen_address, new SocketAddress( "localhost" ) )
+                .setConfig( BoltConnector.enabled, true )
+                .setConfig( HttpConnector.enabled, true )
                 .setConfig(GraphDatabaseSettings.pagecache_memory, "512M")
                 .setConfig(GraphDatabaseSettings.transaction_timeout, Duration.ofSeconds(60))
                 .setConfig(GraphDatabaseSettings.preallocate_logical_logs, true).build();

@@ -15,7 +15,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-    implementation 'org.neo4j:neo4j:4.4.6'
+    //neo4j
+    implementation 'org.neo4j:neo4j:4.4.5'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
